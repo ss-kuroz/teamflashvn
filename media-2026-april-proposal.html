@@ -278,7 +278,7 @@
             html, body {
                 overflow-y: auto !important;
                 overflow-x: hidden !important;
-                scroll-snap-type: y mandatory !important;
+                scroll-snap-type: y proximity !important;
                 scroll-behavior: smooth !important;
                 -webkit-overflow-scrolling: touch !important;
             }
@@ -306,7 +306,7 @@
                 left: 0 !important;
                 top: 0 !important;
                 margin: 0 !important;
-                padding: 20px 12px !important;
+                padding: 20px 12px 60px !important;
                 box-sizing: border-box;
                 overflow-y: visible !important;
                 transform: none !important;
@@ -326,7 +326,6 @@
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
             }
-            /* Cho phép table scroll ngang trong section snap */
             .table-scroll-wrapper {
                 overflow-x: auto !important;
                 -webkit-overflow-scrolling: touch !important;
@@ -335,6 +334,74 @@
             }
             .custom-table {
                 min-width: 600px;
+            }
+
+            /* ── Mobile Navigation ── */
+            .mobile-nav {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 99999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                padding: 10px 16px;
+                background: rgba(0, 0, 0, 0.85);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(255, 140, 0, 0.3);
+            }
+            .mobile-nav .nav-btn {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                border: 1px solid rgba(255, 140, 0, 0.5);
+                background: rgba(255, 140, 0, 0.15);
+                color: #FF8C00;
+                font-size: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+                transition: all 0.2s ease;
+            }
+            .mobile-nav .nav-btn:active {
+                background: rgba(255, 140, 0, 0.4);
+                transform: scale(0.9);
+            }
+            .mobile-nav .nav-btn:disabled {
+                opacity: 0.3;
+                pointer-events: none;
+            }
+            .mobile-nav .dots {
+                display: flex;
+                gap: 6px;
+                align-items: center;
+                padding: 0 8px;
+            }
+            .mobile-nav .dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.2);
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+                transition: all 0.2s ease;
+            }
+            .mobile-nav .dot.active {
+                background: #FF8C00;
+                width: 20px;
+                border-radius: 4px;
+            }
+            .mobile-nav .slide-counter {
+                color: #888;
+                font-size: 12px;
+                font-family: 'Inter', sans-serif;
+                min-width: 36px;
+                text-align: center;
             }
         }
 
@@ -1178,6 +1245,14 @@
     <div id="nav-next" class="slide-nav-hint next" style="display:none;"></div>
     <div id="slide-number" class="slide-number-display"></div>
 
+    <!-- Mobile Navigation -->
+    <div id="mobile-nav" class="mobile-nav" style="display:none;">
+        <button class="nav-btn" id="mob-prev" aria-label="Previous"><i class="fa-solid fa-chevron-up"></i></button>
+        <div class="dots" id="mob-dots"></div>
+        <button class="nav-btn" id="mob-next" aria-label="Next"><i class="fa-solid fa-chevron-down"></i></button>
+        <span class="slide-counter" id="mob-counter">1/12</span>
+    </div>
+
     <!-- Reveal.js Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
     <script>
@@ -1193,26 +1268,72 @@
             slidesEl.style.cssText = 'position:static!important;width:100%!important;height:auto!important;transform:none!important;left:0!important;top:0!important;overflow:visible!important;';
 
             allSections.forEach(function(sec) {
-                sec.style.cssText = 'position:relative!important;width:100%!important;height:auto!important;min-height:100vh!important;max-width:100%!important;left:0!important;top:0!important;margin:0!important;padding:20px 12px!important;box-sizing:border-box!important;overflow-y:visible!important;transform:none!important;display:block!important;scroll-snap-align:start!important;visibility:visible!important;opacity:1!important;';
+                sec.style.cssText = 'position:relative!important;width:100%!important;height:auto!important;min-height:100vh!important;max-width:100%!important;left:0!important;top:0!important;margin:0!important;padding:20px 12px 60px!important;box-sizing:border-box!important;overflow-y:visible!important;transform:none!important;display:block!important;scroll-snap-align:start!important;visibility:visible!important;opacity:1!important;';
             });
 
             // Ẩn Reveal UI
             var hideEls = document.querySelectorAll('.reveal .backgrounds, .reveal .progress, .reveal .slide-number, .reveal .controls');
             hideEls.forEach(function(el) { el.style.display = 'none'; });
 
-            // Slide number cho mobile
-            var slideNumberEl = document.getElementById('slide-number');
-            if (slideNumberEl) {
-                slideNumberEl.style.display = 'block';
-                slideNumberEl.style.fontSize = '12px';
-                // Cập nhật số slide khi scroll trên body
-                window.addEventListener('scroll', function() {
-                    var scrollTop = window.scrollY;
-                    var viewportH = window.innerHeight;
-                    var idx = Math.round(scrollTop / viewportH);
-                    slideNumberEl.textContent = (idx + 1) + ' / ' + allSections.length;
+            // Mobile Navigation
+            var mobileNav = document.getElementById('mobile-nav');
+            var mobDots = document.getElementById('mob-dots');
+            var mobPrev = document.getElementById('mob-prev');
+            var mobNext = document.getElementById('mob-next');
+            var mobCounter = document.getElementById('mob-counter');
+            var currentIdx = 0;
+            var total = allSections.length;
+
+            mobileNav.style.display = 'flex';
+
+            // Tạo dots
+            for (var i = 0; i < total; i++) {
+                var dot = document.createElement('span');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('data-idx', i);
+                dot.addEventListener('click', function() {
+                    var idx = parseInt(this.getAttribute('data-idx'));
+                    scrollToSlide(idx);
+                });
+                mobDots.appendChild(dot);
+            }
+
+            function scrollToSlide(idx) {
+                if (idx < 0 || idx >= total) return;
+                currentIdx = idx;
+                allSections[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                updateMobileNav();
+            }
+
+            function updateMobileNav() {
+                mobCounter.textContent = (currentIdx + 1) + '/' + total;
+                mobPrev.disabled = currentIdx === 0;
+                mobNext.disabled = currentIdx === total - 1;
+                var dots = mobDots.querySelectorAll('.dot');
+                dots.forEach(function(d, i) {
+                    d.className = 'dot' + (i === currentIdx ? ' active' : '');
                 });
             }
+
+            mobPrev.addEventListener('click', function() { scrollToSlide(currentIdx - 1); });
+            mobNext.addEventListener('click', function() { scrollToSlide(currentIdx + 1); });
+
+            // Cập nhật khi scroll
+            var scrollTimeout;
+            window.addEventListener('scroll', function() {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(function() {
+                    var scrollTop = window.scrollY;
+                    var viewportH = window.innerHeight;
+                    var newIdx = Math.round(scrollTop / viewportH);
+                    if (newIdx !== currentIdx && newIdx >= 0 && newIdx < total) {
+                        currentIdx = newIdx;
+                        updateMobileNav();
+                    }
+                }, 80);
+            });
+
+            updateMobileNav();
         } else {
             // Desktop: khởi tạo Reveal.js bình thường
             Reveal.initialize({
