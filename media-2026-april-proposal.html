@@ -276,6 +276,8 @@
             .reveal .slides {
                 width: 100% !important;
                 transform: none !important;
+                left: 0 !important;
+                top: 0 !important;
             }
             .reveal .slides > section {
                 padding: 8px 6px !important;
@@ -342,6 +344,8 @@
             .reveal .slides {
                 width: 100% !important;
                 transform: none !important;
+                left: 0 !important;
+                top: 0 !important;
             }
             .reveal .slides > section {
                 padding: 10px 8px !important;
@@ -411,9 +415,19 @@
 
         /* ── Điện thoại xoay ngang (landscape) ── */
         @media screen and (max-height: 500px) and (orientation: landscape) {
+            .reveal .slides {
+                width: 100% !important;
+                transform: none !important;
+                left: 0 !important;
+                top: 0 !important;
+            }
             .reveal .slides > section {
                 padding: 6px 16px !important;
                 min-height: auto;
+                width: 100% !important;
+                height: auto !important;
+                box-sizing: border-box;
+                overflow-y: auto;
             }
             .reveal h1 { font-size: 1em !important; }
             .reveal h2 { font-size: 0.75em !important; white-space: normal !important; }
@@ -1212,7 +1226,7 @@
             keyboard: true,
             overview: true,
             mobileViewDistance: 2,
-            parallaxBackgroundSize: '' 
+            parallaxBackgroundSize: ''
         });
 
         // Slide navigation hints
