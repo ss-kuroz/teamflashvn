@@ -267,117 +267,120 @@
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             width: 100%;
+            position: relative;
+            z-index: 10;
         }
 
         /* ========== RESPONSIVE MOBILE ========== */
 
-        /* ── Điện thoại nhỏ (≤ 480px) ── */
-        @media screen and (max-width: 480px) {
-            .reveal .slides {
+        /* ── Mobile: scroll dọc snap (≤ 768px) ── */
+        @media screen and (max-width: 768px) {
+            html, body {
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                scroll-snap-type: y mandatory !important;
+                scroll-behavior: smooth !important;
+                -webkit-overflow-scrolling: touch !important;
+            }
+            .reveal {
+                position: static !important;
                 width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+            .reveal .slides {
+                position: static !important;
+                width: 100% !important;
+                height: auto !important;
                 transform: none !important;
                 left: 0 !important;
                 top: 0 !important;
+                overflow: visible !important;
             }
             .reveal .slides > section {
-                padding: 8px 6px !important;
+                position: relative !important;
                 width: 100% !important;
                 height: auto !important;
                 min-height: 100vh;
+                max-width: 100% !important;
+                left: 0 !important;
+                top: 0 !important;
+                margin: 0 !important;
+                padding: 20px 12px !important;
                 box-sizing: border-box;
-                overflow-y: auto;
+                overflow-y: visible !important;
+                transform: none !important;
+                display: block !important;
+                scroll-snap-align: start !important;
+                visibility: visible !important;
+                opacity: 1 !important;
             }
+            .reveal .backgrounds,
+            .reveal .progress,
+            .reveal .slide-number,
+            .reveal .controls {
+                display: none !important;
+            }
+            section[data-id="khoi-luong-brand"] .flex-row,
+            section[data-id="khoi-luong-brand-tong"] .custom-table {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            /* Cho phép table scroll ngang trong section snap */
+            .table-scroll-wrapper {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                touch-action: pan-x pan-y !important;
+                overscroll-behavior-x: auto !important;
+            }
+            .custom-table {
+                min-width: 600px;
+            }
+        }
 
+        /* ── Điện thoại nhỏ (≤ 480px) ── */
+        @media screen and (max-width: 480px) {
+            .reveal .slides > section {
+                padding: 12px 8px !important;
+            }
             .reveal h1 { font-size: 1.1em !important; }
             .reveal h2 { font-size: 0.8em !important; white-space: normal !important; }
             .reveal h3 { font-size: 0.7em !important; }
             .reveal h4 { font-size: 0.55em !important; }
             .reveal p, .reveal li { font-size: 0.48em !important; line-height: 1.25; }
-
-            .flex-row {
-                flex-direction: column !important;
-                gap: 5px !important;
-            }
-            .flex-col {
-                min-width: 100% !important;
-            }
-            .card {
-                padding: 6px !important;
-            }
-            .custom-table {
-                font-size: 0.42em !important;
-            }
-            .custom-table th,
-            .custom-table td {
-                padding: 3px 4px !important;
-            }
-            .timeline {
-                flex-direction: column !important;
-                align-items: center;
-                gap: 14px;
-            }
+            .flex-row { flex-direction: column !important; gap: 5px !important; }
+            .flex-col { min-width: 100% !important; }
+            .card { padding: 6px !important; }
+            .custom-table { font-size: 0.42em !important; }
+            .custom-table th, .custom-table td { padding: 3px 4px !important; }
+            .timeline { flex-direction: column !important; align-items: center; gap: 14px; }
             .timeline::before { display: none; }
-            .timeline-step {
-                width: 100%;
-                padding: 6px !important;
-            }
-            .step-icon {
-                width: 30px !important;
-                height: 30px !important;
-                font-size: 0.8em !important;
-            }
+            .timeline-step { width: 100%; padding: 6px !important; }
+            .step-icon { width: 30px !important; height: 30px !important; font-size: 0.8em !important; }
             .alert-box, .success-box { padding: 5px 8px !important; }
             .icon-list li { margin-bottom: 2px !important; gap: 4px !important; }
             .icon-list i { font-size: 0.7em !important; }
             .slide-nav-hint { display: none !important; }
             .slide-number-display { font-size: 10px !important; }
-            .table-scroll-wrapper {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                margin: 0 -6px;
-                padding: 0 6px;
-            }
+            .table-scroll-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -6px; padding: 0 6px; }
         }
 
         /* ── Điện thoại lớn (481–768px) ── */
         @media screen and (min-width: 481px) and (max-width: 768px) {
-            .reveal .slides {
-                width: 100% !important;
-                transform: none !important;
-                left: 0 !important;
-                top: 0 !important;
-            }
             .reveal .slides > section {
-                padding: 10px 8px !important;
-                width: 100% !important;
-                height: auto !important;
-                min-height: 100vh;
-                box-sizing: border-box;
-                overflow-y: auto;
+                padding: 20px 12px !important;
             }
-
             .reveal h1 { font-size: 1.4em !important; }
             .reveal h2 { font-size: 0.95em !important; white-space: normal !important; }
             .reveal h3 { font-size: 0.8em !important; }
             .reveal h4 { font-size: 0.65em !important; }
             .reveal p, .reveal li { font-size: 0.55em !important; line-height: 1.3; }
-
-            .flex-row {
-                flex-direction: column !important;
-                gap: 6px !important;
-            }
-            .flex-col {
-                min-width: 100% !important;
-            }
+            .flex-row { flex-direction: column !important; gap: 6px !important; }
+            .flex-col { min-width: 100% !important; }
             .card { padding: 8px !important; }
             .custom-table { font-size: 0.5em !important; }
-            .custom-table th,
-            .custom-table td { padding: 4px 5px !important; }
-            .timeline {
-                flex-direction: column !important;
-                align-items: center;
-                gap: 20px;
-            }
+            .custom-table th, .custom-table td { padding: 4px 5px !important; }
+            .timeline { flex-direction: column !important; align-items: center; gap: 20px; }
             .timeline::before { display: none; }
             .timeline-step { width: 100%; padding: 10px !important; }
             .step-icon { width: 35px !important; height: 35px !important; font-size: 0.9em !important; }
@@ -386,48 +389,20 @@
             .icon-list i { font-size: 0.75em !important; }
             .slide-nav-hint { display: none !important; }
             .slide-number-display { font-size: 12px !important; }
-            .table-scroll-wrapper {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                margin: 0 -8px;
-                padding: 0 8px;
-            }
-        }
-
-        /* ── Gộp chung: mọi màn hình ≤ 768px ── */
-        @media screen and (max-width: 768px) {
-            section[data-id="khoi-luong-brand"] .flex-row,
-            section[data-id="khoi-luong-brand-tong"] .custom-table {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
+            .table-scroll-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -8px; padding: 0 8px; }
         }
 
         /* ── Màn hình dọc (portrait) ≤ 768px ── */
         @media screen and (max-width: 768px) and (orientation: portrait) {
-            .flex-row {
-                flex-direction: column !important;
-            }
-            .flex-col {
-                min-width: 100% !important;
-            }
+            .flex-row { flex-direction: column !important; }
+            .flex-col { min-width: 100% !important; }
         }
 
         /* ── Điện thoại xoay ngang (landscape) ── */
         @media screen and (max-height: 500px) and (orientation: landscape) {
-            .reveal .slides {
-                width: 100% !important;
-                transform: none !important;
-                left: 0 !important;
-                top: 0 !important;
-            }
             .reveal .slides > section {
                 padding: 6px 16px !important;
                 min-height: auto;
-                width: 100% !important;
-                height: auto !important;
-                box-sizing: border-box;
-                overflow-y: auto;
             }
             .reveal h1 { font-size: 1em !important; }
             .reveal h2 { font-size: 0.75em !important; white-space: normal !important; }
@@ -1206,69 +1181,98 @@
     <!-- Reveal.js Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
     <script>
-        Reveal.initialize({
-            // Thiết lập tỷ lệ 16:9
-            width: 1280,
-            height: 720,
-            
-            // Đệm viền xung quanh slide
-            margin: 0.05,
+        var isMobile = window.innerWidth <= 768;
 
-            controls: true,
-            progress: true,
-            center: true,
-            hash: true,
-            history: true,
-            transition: 'slide',
+        if (isMobile) {
+            // Mobile: KHÔNG khởi tạo Reveal, dùng scroll-snap trên body
+            var revealEl = document.querySelector('.reveal');
+            var slidesEl = document.querySelector('.reveal .slides');
+            var allSections = document.querySelectorAll('.reveal .slides > section');
 
-            // Mobile-friendly settings
-            touch: true,
-            keyboard: true,
-            overview: true,
-            mobileViewDistance: 2,
-            parallaxBackgroundSize: ''
-        });
+            revealEl.style.cssText = 'position:static!important;width:100%!important;height:auto!important;overflow:visible!important;';
+            slidesEl.style.cssText = 'position:static!important;width:100%!important;height:auto!important;transform:none!important;left:0!important;top:0!important;overflow:visible!important;';
 
-        // Slide navigation hints
-        var navPrev = document.getElementById('nav-prev');
-        var navNext = document.getElementById('nav-next');
-        var slideNumber = document.getElementById('slide-number');
+            allSections.forEach(function(sec) {
+                sec.style.cssText = 'position:relative!important;width:100%!important;height:auto!important;min-height:100vh!important;max-width:100%!important;left:0!important;top:0!important;margin:0!important;padding:20px 12px!important;box-sizing:border-box!important;overflow-y:visible!important;transform:none!important;display:block!important;scroll-snap-align:start!important;visibility:visible!important;opacity:1!important;';
+            });
 
-        function updateNavHints() {
-            var slides = document.querySelectorAll('.reveal .slides > section');
-            var currentIndex = Reveal.getIndices().h;
-            var total = slides.length;
-            var prevTitle = '', nextTitle = '';
+            // Ẩn Reveal UI
+            var hideEls = document.querySelectorAll('.reveal .backgrounds, .reveal .progress, .reveal .slide-number, .reveal .controls');
+            hideEls.forEach(function(el) { el.style.display = 'none'; });
 
-            if (currentIndex > 0) {
-                var prevH2 = slides[currentIndex - 1].querySelector('h2');
-                if (prevH2) prevTitle = prevH2.textContent.trim();
+            // Slide number cho mobile
+            var slideNumberEl = document.getElementById('slide-number');
+            if (slideNumberEl) {
+                slideNumberEl.style.display = 'block';
+                slideNumberEl.style.fontSize = '12px';
+                // Cập nhật số slide khi scroll trên body
+                window.addEventListener('scroll', function() {
+                    var scrollTop = window.scrollY;
+                    var viewportH = window.innerHeight;
+                    var idx = Math.round(scrollTop / viewportH);
+                    slideNumberEl.textContent = (idx + 1) + ' / ' + allSections.length;
+                });
             }
-            if (currentIndex < slides.length - 1) {
-                var nextH2 = slides[currentIndex + 1].querySelector('h2');
-                if (nextH2) nextTitle = nextH2.textContent.trim();
+        } else {
+            // Desktop: khởi tạo Reveal.js bình thường
+            Reveal.initialize({
+                width: 1280,
+                height: 720,
+                margin: 0.05,
+                controls: true,
+                progress: true,
+                center: true,
+                hash: true,
+                history: true,
+                transition: 'slide',
+                touch: true,
+                keyboard: true,
+                overview: true,
+                mobileViewDistance: 2,
+                parallaxBackgroundSize: ''
+            });
+
+            // Slide navigation hints (desktop only)
+            var navPrev = document.getElementById('nav-prev');
+            var navNext = document.getElementById('nav-next');
+            var slideNumber = document.getElementById('slide-number');
+
+            function updateNavHints() {
+                var slides = document.querySelectorAll('.reveal .slides > section');
+                var currentIndex = Reveal.getIndices().h;
+                var total = slides.length;
+                var prevTitle = '', nextTitle = '';
+
+                if (currentIndex > 0) {
+                    var prevH2 = slides[currentIndex - 1].querySelector('h2');
+                    if (prevH2) prevTitle = prevH2.textContent.trim();
+                }
+                if (currentIndex < slides.length - 1) {
+                    var nextH2 = slides[currentIndex + 1].querySelector('h2');
+                    if (nextH2) nextTitle = nextH2.textContent.trim();
+                }
+
+                if (prevTitle) {
+                    navPrev.innerHTML = '<i class="fa-solid fa-chevron-left"></i> ' + prevTitle;
+                    navPrev.style.display = 'block';
+                } else {
+                    navPrev.style.display = 'none';
+                }
+
+                if (nextTitle) {
+                    navNext.innerHTML = nextTitle + ' <i class="fa-solid fa-chevron-right"></i>';
+                    navNext.style.display = 'block';
+                } else {
+                    navNext.style.display = 'none';
+                }
+
+                slideNumber.textContent = (currentIndex + 1) + ' / ' + total;
             }
 
-            if (prevTitle) {
-                navPrev.innerHTML = '<i class="fa-solid fa-chevron-left"></i> ' + prevTitle;
-                navPrev.style.display = 'block';
-            } else {
-                navPrev.style.display = 'none';
-            }
-
-            if (nextTitle) {
-                navNext.innerHTML = nextTitle + ' <i class="fa-solid fa-chevron-right"></i>';
-                navNext.style.display = 'block';
-            } else {
-                navNext.style.display = 'none';
-            }
-
-            slideNumber.textContent = (currentIndex + 1) + ' / ' + total;
+            Reveal.on('slidechanged', updateNavHints);
+            Reveal.on('ready', updateNavHints);
+            updateNavHints();
         }
-
-        Reveal.on('slidechanged', updateNavHints);
-        Reveal.on('ready', updateNavHints);
-        updateNavHints();
     </script>
 </body>
 </html>
