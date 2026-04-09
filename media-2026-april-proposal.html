@@ -19,482 +19,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/night.min.css">
     
-    <style>
-        /* Môi trường tổng thể */
-        body {
-            background: radial-gradient(circle at center, #2a2a2a 0%, #121212 100%);
-        }
-        .reveal {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        /* Typography */
-        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-        
-        .reveal h1 {
-            color: #ffffff;
-            font-size: 2em;
-            text-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
-        }
-        
-        .reveal h2 {
-            color: #FF8C00;
-            font-size: 1.3em;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #FF8C00;
-            display: inline-block;
-            padding-bottom: 6px;
-        }
-
-        .reveal h3 { color: #FFD700; font-size: 1em; }
-        .reveal h4 { color: #ffffff; font-size: 0.75em; margin-bottom: 8px; }
-        
-        .reveal p, .reveal li {
-            font-size: 0.65em;
-            line-height: 1.4;
-            color: #e0e0e0;
-        }
-        
-        .text-orange { color: #FF8C00 !important; }
-        .text-yellow { color: #FFD700 !important; }
-        .text-red { color: #ff5252 !important; }
-        .text-green { color: #4caf50 !important; }
-        .text-blue { color: #2196f3 !important; }
-        
-        /* Bố cục & Component */
-        .flex-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-        }
-        .flex-col {
-            flex: 1;
-            min-width: 0;
-        }
-        
-        .card {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 140, 0, 0.3);
-            border-radius: 10px;
-            padding: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: rgba(255, 140, 0, 0.8);
-            transform: translateY(-5px);
-        }
-        
-        .alert-box {
-            background: rgba(255, 82, 82, 0.1);
-            border-left: 5px solid #ff5252;
-            padding: 8px 15px;
-            border-radius: 0 8px 8px 0;
-            margin-top: 10px;
-        }
-
-        .success-box {
-            background: rgba(76, 175, 80, 0.1);
-            border-left: 5px solid #4caf50;
-            padding: 8px 15px;
-            border-radius: 0 8px 8px 0;
-            margin-top: 10px;
-        }
-
-        /* Danh sách có icon */
-        .icon-list {
-            list-style: none;
-            padding-left: 0;
-            text-align: left;
-        }
-        .icon-list li {
-            margin-bottom: 6px;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-        }
-        .icon-list i {
-            margin-top: 3px;
-            color: #FF8C00;
-            width: 18px;
-            text-align: center;
-            font-size: 0.85em;
-        }
-
-        /* Bảng biểu custom */
-        .custom-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.65em;
-        }
-        .custom-table th {
-            background: linear-gradient(90deg, #FF8C00, #FF6347);
-            color: #fff;
-            padding: 6px 10px;
-            font-weight: 600;
-            text-align: center;
-            border: none;
-        }
-        .custom-table td {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 6px 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            border-right: none;
-            border-left: none;
-            vertical-align: middle;
-        }
-        .custom-table tr:last-child td {
-            border-bottom: none;
-        }
-        .custom-table tr:hover td {
-            background: rgba(255, 140, 0, 0.1);
-        }
-
-        /* Bảng đỏ cảnh báo */
-        .danger-table th {
-            background: linear-gradient(90deg, #b71c1c, #ff5252);
-        }
-        .danger-table {
-            border-color: #ff5252;
-        }
-
-        /* Timeline cho lộ trình */
-        .timeline {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            margin-top: 40px;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: rgba(255, 140, 0, 0.3);
-            z-index: 0;
-        }
-        .timeline-step {
-            flex: 1;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            padding: 0 10px;
-        }
-        .step-icon {
-            width: 45px;
-            height: 45px;
-            background: #222;
-            border: 2px solid #FF8C00;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px auto;
-            color: #FF8C00;
-            font-size: 1.2em;
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
-        }
-        .timeline-step h4 {
-            color: #FFD700;
-            margin-bottom: 5px;
-            font-size: 0.7em;
-        }
-        .timeline-step p {
-            font-size: 0.55em;
-            color: #aaa;
-        }
-
-        /* Slide navigation hints */
-        .slide-nav-hint {
-            position: fixed;
-            top: 6px;
-            font-size: 14px;
-            font-family: 'Inter', sans-serif;
-            color: #bbb;
-            z-index: 99999;
-            pointer-events: none;
-            max-width: 30%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            background: rgba(0,0,0,0.75);
-            padding: 5px 12px;
-            border-radius: 4px;
-        }
-        .slide-nav-hint.prev {
-            left: 12px;
-            text-align: left;
-        }
-        .slide-nav-hint.next {
-            right: 12px;
-            text-align: right;
-        }
-
-        /* Slide number */
-        .slide-number-display {
-            position: fixed;
-            bottom: 8px;
-            left: 12px;
-            font-size: 18px;
-            font-family: 'Inter', sans-serif;
-            color: #bbb;
-            z-index: 99999;
-            pointer-events: none;
-            background: rgba(0,0,0,0.6);
-            padding: 4px 12px;
-            border-radius: 4px;
-        }
-        .slide-nav-hint i {
-            margin: 0 3px;
-            opacity: 0.6;
-        }
-
-        /* Table scroll wrapper for mobile */
-        .table-scroll-wrapper {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            width: 100%;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* ========== RESPONSIVE MOBILE ========== */
-
-        /* ── Mobile: Bỏ Reveal.js, dùng CSS scroll thuần ── */
-        @media screen and (max-width: 768px) {
-            /* Reset toàn bộ layout Reveal.js trên mobile */
-            .reveal {
-                position: static !important;
-                width: 100% !important;
-                height: auto !important;
-                overflow: visible !important;
-                touch-action: pan-y !important;
-            }
-            .reveal-viewport {
-                position: static !important;
-                width: 100% !important;
-                height: auto !important;
-                overflow: visible !important;
-                touch-action: pan-y !important;
-            }
-            .reveal .slides {
-                position: static !important;
-                width: 100% !important;
-                height: auto !important;
-                overflow: visible !important;
-                transform: none !important;
-                perspective: none !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                text-align: center !important;
-                left: 0 !important;
-                top: 0 !important;
-                right: 0 !important;
-                bottom: 0 !important;
-            }
-            .reveal .slides > section {
-                position: static !important;
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                width: 100% !important;
-                height: auto !important;
-                min-height: auto !important;
-                transform: none !important;
-                transition: none !important;
-                overflow: visible !important;
-                margin: 0 auto !important;
-                padding: 24px 16px 80px !important;
-                box-sizing: border-box !important;
-                text-align: center !important;
-                pointer-events: auto !important;
-                left: 0 !important;
-                top: 0 !important;
-                right: 0 !important;
-                bottom: 0 !important;
-            }
-            /* Đảm bảo nội dung bên trong slide căn giữa */
-            .reveal .slides > section > * {
-                max-width: 100% !important;
-                margin-left: auto !important;
-                margin-right: auto !important;
-                box-sizing: border-box !important;
-            }
-            /* Fix các block nội dung bị lệch */
-            .reveal .slides > section .flex-row {
-                max-width: 100% !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-                box-sizing: border-box !important;
-            }
-            .reveal .slides > section .card {
-                max-width: 100% !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-                box-sizing: border-box !important;
-            }
-            .reveal .slides > section .alert-box,
-            .reveal .slides > section .success-box {
-                max-width: 100% !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-                box-sizing: border-box !important;
-            }
-            .reveal .slides > section .table-scroll-wrapper {
-                max-width: 100% !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-                box-sizing: border-box !important;
-            }
-            .reveal .slides > section .timeline {
-                max-width: 100% !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-                box-sizing: border-box !important;
-            }
-            /* Fix inline style blocks */
-            .reveal .slides > section [style*="margin"] {
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-            }
-            /* Fix h2 border-bottom không bị cắt */
-            .reveal .slides > section h2 {
-                display: inline-block !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-            }
-
-            /* Ẩn Reveal UI trên mobile */
-            .reveal .backgrounds,
-            .reveal .progress,
-            .reveal .slide-number,
-            .reveal .controls {
-                display: none !important;
-            }
-
-            /* Table scroll wrapper */
-            .table-scroll-wrapper {
-                overflow-x: auto !important;
-                -webkit-overflow-scrolling: touch !important;
-                touch-action: pan-x pan-y !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-            }
-            .custom-table {
-                min-width: 550px;
-            }
-
-
-        }
-
-        /* ── Điện thoại nhỏ (≤ 480px) ── */
-        @media screen and (max-width: 480px) {
-            .reveal .slides > section {
-                padding: 16px 10px 80px !important;
-            }
-            .reveal h1 { font-size: 1.2em !important; }
-            .reveal h2 { font-size: 0.85em !important; white-space: normal !important; }
-            .reveal h3 { font-size: 0.75em !important; }
-            .reveal h4 { font-size: 0.65em !important; }
-            .reveal p, .reveal li { font-size: 0.6em !important; line-height: 1.35; }
-            .flex-row { flex-direction: column !important; gap: 8px !important; }
-            .flex-col { min-width: 100% !important; }
-            .card { padding: 8px !important; }
-            .custom-table { font-size: 0.55em !important; min-width: 480px; }
-            .custom-table th, .custom-table td { padding: 4px 6px !important; }
-            .timeline { flex-direction: column !important; align-items: center; gap: 14px; }
-            .timeline::before { display: none; }
-            .timeline-step { width: 100%; padding: 8px !important; }
-            .step-icon { width: 32px !important; height: 32px !important; font-size: 0.85em !important; }
-            .alert-box, .success-box { padding: 6px 10px !important; }
-            .icon-list li { margin-bottom: 3px !important; gap: 6px !important; }
-            .icon-list i { font-size: 0.8em !important; }
-            .slide-nav-hint { display: none !important; }
-            .slide-number-display { font-size: 10px !important; }
-            .table-scroll-wrapper { margin: 0 -6px; padding: 0 6px; }
-        }
-
-        /* ── Điện thoại lớn (481–768px) ── */
-        @media screen and (min-width: 481px) and (max-width: 768px) {
-            .reveal .slides > section {
-                padding: 24px 14px 80px !important;
-            }
-            .reveal h1 { font-size: 1.5em !important; }
-            .reveal h2 { font-size: 1em !important; white-space: normal !important; }
-            .reveal h3 { font-size: 0.85em !important; }
-            .reveal h4 { font-size: 0.7em !important; }
-            .reveal p, .reveal li { font-size: 0.65em !important; line-height: 1.35; }
-            .flex-row { flex-direction: column !important; gap: 10px !important; }
-            .flex-col { min-width: 100% !important; }
-            .card { padding: 10px !important; }
-            .custom-table { font-size: 0.6em !important; }
-            .custom-table th, .custom-table td { padding: 5px 7px !important; }
-            .timeline { flex-direction: column !important; align-items: center; gap: 20px; }
-            .timeline::before { display: none; }
-            .timeline-step { width: 100%; padding: 12px !important; }
-            .step-icon { width: 38px !important; height: 38px !important; font-size: 0.95em !important; }
-            .alert-box, .success-box { padding: 8px 12px !important; }
-            .icon-list li { margin-bottom: 4px !important; gap: 6px !important; }
-            .icon-list i { font-size: 0.8em !important; }
-            .slide-nav-hint { display: none !important; }
-            .slide-number-display { font-size: 12px !important; }
-            .table-scroll-wrapper { margin: 0 -8px; padding: 0 8px; }
-        }
-
-        /* ── Màn hình dọc (portrait) ≤ 768px ── */
-        @media screen and (max-width: 768px) and (orientation: portrait) {
-            .flex-row { flex-direction: column !important; }
-            .flex-col { min-width: 100% !important; }
-        }
-
-        /* ── Điện thoại xoay ngang (landscape) ── */
-        @media screen and (max-height: 500px) and (orientation: landscape) {
-            .reveal .slides > section {
-                padding: 8px 20px 60px !important;
-            }
-            .reveal h1 { font-size: 1em !important; }
-            .reveal h2 { font-size: 0.75em !important; white-space: normal !important; }
-            .reveal h3 { font-size: 0.65em !important; }
-            .reveal h4 { font-size: 0.55em !important; }
-            .reveal p, .reveal li { font-size: 0.5em !important; line-height: 1.25; }
-            .flex-row { flex-direction: row !important; gap: 6px !important; }
-            .flex-col { min-width: 0 !important; }
-            .card { padding: 6px !important; }
-            .step-icon { width: 28px !important; height: 28px !important; font-size: 0.75em !important; }
-            .timeline { gap: 10px; margin-top: 20px; }
-            .slide-nav-hint { display: none !important; }
-        }
-
-        /* ── Tablet (iPad) 769–1024px ── */
-        @media screen and (min-width: 769px) and (max-width: 1024px) {
-            .reveal h2 { font-size: 1.1em !important; }
-            .reveal h4 { font-size: 0.7em !important; }
-            .reveal p, .reveal li { font-size: 0.6em !important; }
-            .flex-row { gap: 8px !important; }
-        }
-
-        /* ── Tablet dọc (portrait) ── */
-        @media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
-            .flex-row { gap: 6px !important; }
-            .reveal h2 { font-size: 1em !important; }
-            .reveal p, .reveal li { font-size: 0.55em !important; }
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/proposal.css">
 </head>
 <body>
     <div class="reveal">
@@ -700,7 +226,7 @@
 
             <!-- Slide 3b: Tổng khối lượng deliverables -->
             <section data-id="khoi-luong-brand-tong">
-                <h2><i class="fa-solid fa-calculator"></i> 3. KHỐI LƯỢNG BRAND 2026 — TỔNG DELIVERABLES</h2>
+                <h2><i class="fa-solid fa-calculator"></i> 4. KHỐI LƯỢNG BRAND 2026 — TỔNG DELIVERABLES</h2>
                 <div class="table-scroll-wrapper">
                 <table class="custom-table" style="font-size: 0.55em;">
                         <tr>
@@ -773,7 +299,7 @@
 
             <!-- Slide 4: Hậu quả -->
             <section data-id="hau-qua">
-                <h2><i class="fa-solid fa-heart-crack"></i> 4. HẬU QUẢ TỔNG THỂ</h2>
+                <h2><i class="fa-solid fa-heart-crack"></i> 5. HẬU QUẢ TỔNG THỂ</h2>
                 
                 <div class="alert-box" style="margin-top: 0; margin-bottom: 10px;">
                     <p style="margin: 0; text-align: center; font-size: 0.85em;">
@@ -822,7 +348,7 @@
 
             <!-- Slide 6: So sánh -->
             <section data-id="brand-vs-team">
-                <h2><i class="fa-solid fa-code-compare"></i> 5. BRAND CONTENT vs TEAM CONTENT</h2>
+                <h2><i class="fa-solid fa-code-compare"></i> 6. BRAND CONTENT vs TEAM CONTENT</h2>
                 
                 <div class="table-scroll-wrapper">
                 <table class="custom-table" style="margin-top: 30px;">
@@ -862,7 +388,7 @@
 
             <!-- Slide 7: Giải pháp -->
             <section data-id="giai-phap">
-                <h2 style="white-space: nowrap;"><i class="fa-solid fa-lightbulb"></i> 6. GIẢI PHÁP: TÁCH BIỆT</h2>
+                <h2 style="white-space: nowrap;"><i class="fa-solid fa-lightbulb"></i> 7. GIẢI PHÁP: TÁCH BIỆT</h2>
                 
                 <div class="card" style="text-align: center; margin-bottom: 6px; padding: 5px;">
                     <p style="margin: 0; font-size: 0.6em;">
@@ -909,7 +435,7 @@
 
             <!-- Slide 8: Cấu trúc Team -->
             <section data-id="cau-truc-team">
-                <h2><i class="fa-solid fa-sitemap"></i> 7. CẤU TRÚC ĐỀ XUẤT SẮP TỚI</h2>
+                <h2><i class="fa-solid fa-sitemap"></i> 8. CẤU TRÚC ĐỀ XUẤT SẮP TỚI</h2>
                 <p style="text-align: center; margin-bottom: 10px;"><strong>MỤC TIÊU:</strong> Trở thành Top-of-mind Esports Org tại VN & SEA.</p>
                 
                 <div class="flex-row" style="margin-bottom: 10px;">
@@ -968,7 +494,7 @@
 
             <!-- Slide 9: SOW CTV -->
             <section data-id="sow-ctv">
-                <h2><i class="fa-solid fa-clipboard-list"></i> 8. SCOPE OF WORK - CTV</h2>
+                <h2><i class="fa-solid fa-clipboard-list"></i> 9. SCOPE OF WORK - CTV</h2>
                 
                 <div style="margin-bottom: 8px;">
                     <a href="https://docs.google.com/spreadsheets/d/1Vi64j9G_YIdkZo0MmFccHUq4dEGgym6OXx4y-xzQZfI/edit?gid=1148576390#gid=1148576390" target="_blank" style="display: inline-block; padding: 5px 12px; background: rgba(255, 140, 0, 0.2); border: 1px solid #FF8C00; border-radius: 6px; color: #FFD700; text-decoration: none; font-size: 0.55em; transition: all 0.3s ease;">
@@ -1048,7 +574,7 @@
 
             <!-- Slide 10: Ngân sách hiện tại -->
             <section data-id="ngan-sach">
-                <h2><i class="fa-solid fa-wallet"></i> 9. NGÂN SÁCH HIỆN TẠI (CURRENT RUN RATE)</h2>
+                <h2><i class="fa-solid fa-wallet"></i> 10. NGÂN SÁCH HIỆN TẠI (CURRENT RUN RATE)</h2>
                 
                 <div class="flex-row">
                     <!-- Chi phí Nhân sự -->
@@ -1056,6 +582,7 @@
                         <h4 style="color: #FFD700; text-align: center;"><i class="fa-solid fa-users"></i> CHI PHÍ NHÂN SỰ</h4>
                         <p style="text-align: center; color: #aaa; font-size: 0.65em; margin-bottom: 8px;">(10 Nhân sự: 8 Core + 2 CTV)</p>
                         
+                        <div class="table-scroll-wrapper">
                         <table class="custom-table" style="font-size: 0.7em;">
                             <tr>
                                 <th>Hạng mục</th>
@@ -1074,6 +601,7 @@
                                 <td style="text-align: right; font-weight: bold; color: #FFD700; font-size: 1.05em;">171,922,500</td>
                             </tr>
                         </table>
+                        </div>
                     </div>
 
                     <!-- Chi phí Phần mềm -->
@@ -1112,12 +640,13 @@
 
             <!-- Slide 11: Dự báo ngân sách mới -->
             <section data-id="ngan-sach-moi">
-                <h2><i class="fa-solid fa-chart-line"></i> 10. DỰ BÁO NGÂN SÁCH MỚI</h2>
+                <h2><i class="fa-solid fa-chart-line"></i> 11. DỰ BÁO NGÂN SÁCH MỚI</h2>
                 
                 <div class="flex-row" style="gap: 6px;">
                     <!-- Nhân sự mới -->
                     <div class="flex-col card" style="border-top: 4px solid #FF8C00; padding: 6px;">
                         <h4 style="color: #FFD700; text-align: center; font-size: 0.65em;"><i class="fa-solid fa-user-plus"></i> NHÂN SỰ TĂNG THÊM (8 → 10 CORE)</h4>
+                        <div class="table-scroll-wrapper">
                         <table class="custom-table" style="font-size: 0.55em;">
                             <tr><th>Vị trí</th><th>Tăng thêm</th></tr>
                             <tr><td><i class="fa-solid fa-camera text-orange"></i> Cam Ops (mới)</td><td style="text-align: right; font-weight: bold;">12-15tr</td></tr>
@@ -1125,6 +654,7 @@
                             <tr><td><i class="fa-solid fa-notes-medical text-blue"></i> BHXH (~21.5%)</td><td style="text-align: right; font-weight: bold;">~3.6-4.3tr</td></tr>
                             <tr style="background: rgba(255,140,0,0.2);"><td><strong>TỔNG</strong></td><td style="text-align: right; font-weight: bold; color: #FFD700;">~18.6-24.3tr</td></tr>
                         </table>
+                        </div>
                     </div>
 
                     <!-- CTV & Toolset -->
@@ -1195,7 +725,7 @@
 
             <!-- Slide 11: Lộ trình -->
             <section data-id="lo-trinh">
-                <h2><i class="fa-solid fa-route"></i> 11. LỘ TRÌNH TRIỂN KHAI</h2>
+                <h2><i class="fa-solid fa-route"></i> 12. LỘ TRÌNH TRIỂN KHAI</h2>
                 
                 <div class="timeline">
                     <!-- Phase 1 -->
