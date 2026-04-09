@@ -312,73 +312,7 @@
                 min-width: 550px;
             }
 
-            /* ── Mobile Navigation ── */
-            .mobile-nav {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                z-index: 99999;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 6px;
-                padding: 10px 16px;
-                background: rgba(0, 0, 0, 0.85);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                border-top: 1px solid rgba(255, 140, 0, 0.3);
-            }
-            .mobile-nav .nav-btn {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                border: 1px solid rgba(255, 140, 0, 0.5);
-                background: rgba(255, 140, 0, 0.15);
-                color: #FF8C00;
-                font-size: 16px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                -webkit-tap-highlight-color: transparent;
-                transition: all 0.2s ease;
-            }
-            .mobile-nav .nav-btn:active {
-                background: rgba(255, 140, 0, 0.4);
-                transform: scale(0.9);
-            }
-            .mobile-nav .nav-btn:disabled {
-                opacity: 0.3;
-                pointer-events: none;
-            }
-            .mobile-nav .dots {
-                display: flex;
-                gap: 6px;
-                align-items: center;
-                padding: 0 8px;
-            }
-            .mobile-nav .dot {
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.2);
-                cursor: pointer;
-                -webkit-tap-highlight-color: transparent;
-                transition: all 0.2s ease;
-            }
-            .mobile-nav .dot.active {
-                background: #FF8C00;
-                width: 20px;
-                border-radius: 4px;
-            }
-            .mobile-nav .slide-counter {
-                color: #888;
-                font-size: 12px;
-                font-family: 'Inter', sans-serif;
-                min-width: 36px;
-                text-align: center;
-            }
+
         }
 
         /* ── Điện thoại nhỏ (≤ 480px) ── */
@@ -1221,14 +1155,6 @@
     <div id="nav-next" class="slide-nav-hint next" style="display:none;"></div>
     <div id="slide-number" class="slide-number-display"></div>
 
-    <!-- Mobile Navigation -->
-    <div id="mobile-nav" class="mobile-nav" style="display:none;">
-        <button class="nav-btn" id="mob-prev" aria-label="Previous"><i class="fa-solid fa-chevron-up"></i></button>
-        <div class="dots" id="mob-dots"></div>
-        <button class="nav-btn" id="mob-next" aria-label="Next"><i class="fa-solid fa-chevron-down"></i></button>
-        <span class="slide-counter" id="mob-counter">1/12</span>
-    </div>
-
     <!-- Reveal.js Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
     <script>
@@ -1255,9 +1181,6 @@
                 view: 'scroll',
                 scrollLayout: 'full',
                 mobileViewDistance: 2
-            }).then(function() {
-                // Sau khi Reveal scroll-view khởi tạo, thiết lập mobile nav
-                setupMobileNav();
             });
         } else {
             // Desktop: khởi tạo Reveal.js bình thường
@@ -1320,61 +1243,7 @@
             updateNavHints();
         }
 
-        function setupMobileNav() {
-            var mobileNav = document.getElementById('mobile-nav');
-            var mobDots = document.getElementById('mob-dots');
-            var mobPrev = document.getElementById('mob-prev');
-            var mobNext = document.getElementById('mob-next');
-            var mobCounter = document.getElementById('mob-counter');
-            var allSections = document.querySelectorAll('.reveal .slides > section');
-            var total = allSections.length;
-            var currentIdx = 0;
 
-            mobileNav.style.display = 'flex';
-
-            // Tạo dots
-            for (var i = 0; i < total; i++) {
-                var dot = document.createElement('span');
-                dot.className = 'dot' + (i === 0 ? ' active' : '');
-                dot.setAttribute('data-idx', i);
-                dot.addEventListener('click', function() {
-                    var idx = parseInt(this.getAttribute('data-idx'));
-                    scrollToSlide(idx);
-                });
-                mobDots.appendChild(dot);
-            }
-
-            function scrollToSlide(idx) {
-                if (idx < 0 || idx >= total) return;
-                currentIdx = idx;
-                // Dùng Reveal.slide() API thay vì scrollIntoView
-                // để đồng bộ với scroll view
-                Reveal.slide(idx, 0, 0);
-                updateMobileNav();
-            }
-
-            function updateMobileNav() {
-                mobCounter.textContent = (currentIdx + 1) + '/' + total;
-                mobPrev.disabled = currentIdx === 0;
-                mobNext.disabled = currentIdx === total - 1;
-                var dots = mobDots.querySelectorAll('.dot');
-                dots.forEach(function(d, i) {
-                    d.className = 'dot' + (i === currentIdx ? ' active' : '');
-                });
-            }
-
-            mobPrev.addEventListener('click', function() { scrollToSlide(currentIdx - 1); });
-            mobNext.addEventListener('click', function() { scrollToSlide(currentIdx + 1); });
-
-            // Đồng bộ nav khi Reveal báo slide thay đổi (scroll)
-            Reveal.on('slidechanged', function(event) {
-                currentIdx = event.indexh;
-                updateMobileNav();
-            });
-
-            // Cập nhật lần đầu
-            updateMobileNav();
-        }
     </script>
 </body>
 </html>
