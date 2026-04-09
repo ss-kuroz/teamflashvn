@@ -300,6 +300,10 @@
                 margin: 0 !important;
                 padding: 0 !important;
                 text-align: center !important;
+                left: 0 !important;
+                top: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
             }
             .reveal .slides > section {
                 position: static !important;
@@ -317,11 +321,60 @@
                 box-sizing: border-box !important;
                 text-align: center !important;
                 pointer-events: auto !important;
+                left: 0 !important;
+                top: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
             }
+            /* Đảm bảo nội dung bên trong slide căn giữa */
             .reveal .slides > section > * {
                 max-width: 100% !important;
                 margin-left: auto !important;
                 margin-right: auto !important;
+                box-sizing: border-box !important;
+            }
+            /* Fix các block nội dung bị lệch */
+            .reveal .slides > section .flex-row {
+                max-width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                box-sizing: border-box !important;
+            }
+            .reveal .slides > section .card {
+                max-width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                box-sizing: border-box !important;
+            }
+            .reveal .slides > section .alert-box,
+            .reveal .slides > section .success-box {
+                max-width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                box-sizing: border-box !important;
+            }
+            .reveal .slides > section .table-scroll-wrapper {
+                max-width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                box-sizing: border-box !important;
+            }
+            .reveal .slides > section .timeline {
+                max-width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                box-sizing: border-box !important;
+            }
+            /* Fix inline style blocks */
+            .reveal .slides > section [style*="margin"] {
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            /* Fix h2 border-bottom không bị cắt */
+            .reveal .slides > section h2 {
+                display: inline-block !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
             }
 
             /* Ẩn Reveal UI trên mobile */
@@ -337,8 +390,10 @@
                 overflow-x: auto !important;
                 -webkit-overflow-scrolling: touch !important;
                 touch-action: pan-x pan-y !important;
-                margin: 0 -8px;
-                padding: 0 8px;
+                margin: 0 !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
             }
             .custom-table {
                 min-width: 550px;
