@@ -273,23 +273,55 @@
 
         /* ========== RESPONSIVE MOBILE ========== */
 
-        /* ── Reveal.js Scroll View overrides cho mobile ── */
+        /* ── Mobile: Bỏ Reveal.js, dùng CSS scroll thuần ── */
         @media screen and (max-width: 768px) {
-            /* Reveal scroll-view tự xử lý layout, chỉ cần override style */
-            .reveal-viewport.view-scroll {
-                overflow-y: auto !important;
-                overflow-x: hidden !important;
-            }
-            .reveal.view-scroll .slides {
+            /* Reset toàn bộ layout Reveal.js trên mobile */
+            .reveal {
+                position: static !important;
+                width: 100% !important;
                 height: auto !important;
                 overflow: visible !important;
+                touch-action: pan-y !important;
             }
-            .reveal.view-scroll .slides > section {
-                padding: 24px 16px 80px !important;
+            .reveal-viewport {
+                position: static !important;
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+                touch-action: pan-y !important;
+            }
+            .reveal .slides {
+                position: static !important;
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+                transform: none !important;
+                perspective: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                text-align: center !important;
+            }
+            .reveal .slides > section {
+                position: static !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                width: 100% !important;
+                height: auto !important;
                 min-height: auto !important;
-                /* Cho phép nội dung dài tự nhiên, không ép 100vh */
-                height: auto !important;
+                transform: none !important;
+                transition: none !important;
                 overflow: visible !important;
+                margin: 0 auto !important;
+                padding: 24px 16px 80px !important;
+                box-sizing: border-box !important;
+                text-align: center !important;
+                pointer-events: auto !important;
+            }
+            .reveal .slides > section > * {
+                max-width: 100% !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
             }
 
             /* Ẩn Reveal UI trên mobile */
@@ -317,7 +349,7 @@
 
         /* ── Điện thoại nhỏ (≤ 480px) ── */
         @media screen and (max-width: 480px) {
-            .reveal.view-scroll .slides > section {
+            .reveal .slides > section {
                 padding: 16px 10px 80px !important;
             }
             .reveal h1 { font-size: 1.2em !important; }
@@ -344,7 +376,7 @@
 
         /* ── Điện thoại lớn (481–768px) ── */
         @media screen and (min-width: 481px) and (max-width: 768px) {
-            .reveal.view-scroll .slides > section {
+            .reveal .slides > section {
                 padding: 24px 14px 80px !important;
             }
             .reveal h1 { font-size: 1.5em !important; }
@@ -377,7 +409,7 @@
 
         /* ── Điện thoại xoay ngang (landscape) ── */
         @media screen and (max-height: 500px) and (orientation: landscape) {
-            .reveal.view-scroll .slides > section {
+            .reveal .slides > section {
                 padding: 8px 20px 60px !important;
             }
             .reveal h1 { font-size: 1em !important; }
@@ -1161,27 +1193,10 @@
         var isMobile = window.innerWidth <= 768;
 
         if (isMobile) {
-            // Mobile: Dùng Reveal.js scroll view — tính năng tích hợp sẵn
-            // cho phép cuộn dọc tự nhiên thay vì slide presentation
-            Reveal.initialize({
-                width: '100%',
-                height: 'auto',
-                margin: 0,
-                minScale: 1,
-                maxScale: 1,
-                controls: false,
-                progress: false,
-                center: false,
-                hash: true,
-                history: true,
-                transition: 'none',
-                touch: true,
-                keyboard: true,
-                overview: false,
-                view: 'scroll',
-                scrollLayout: 'full',
-                mobileViewDistance: 2
-            });
+            // Mobile: KHÔNG dùng Reveal.js — dùng CSS scroll thuần
+            // Tránh bug Reveal.js scroll view lệch layout khi mở portrait lần đầu
+            // Chỉ cần đảm bảo tất cả section hiển thị block và cuộn dọc tự nhiên
+            // CSS đã xử lý toàn bộ layout, không cần JS init
         } else {
             // Desktop: khởi tạo Reveal.js bình thường
             Reveal.initialize({
