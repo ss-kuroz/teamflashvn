@@ -152,6 +152,16 @@ body {
     border-color: #ff5252;
 }
 
+/* ── Bảng nhỏ gọn (dành cho slide nhiều dòng) ── */
+.compact-table th {
+    padding: 3px 6px;
+    font-size: 0.9em;
+}
+.compact-table td {
+    padding: 3px 6px;
+    font-size: 0.95em;
+}
+
 /* ── Timeline cho lộ trình ── */
 .timeline {
     display: flex;

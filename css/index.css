@@ -153,6 +153,7 @@ body {
 }
 .badge.live   { background: #4caf50; color: #fff; }
 .badge.draft  { background: #FF8C00; color: #fff; }
+.badge.urgent { background: #ff5252; color: #fff; }
 
 /* ── Empty state ── */
 .empty {
