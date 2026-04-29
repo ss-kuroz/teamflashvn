@@ -14,6 +14,22 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Tailwind CSS v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            --color-tf-orange: #FF8C00;
+            --color-tf-gold: #FFD700;
+            --color-tf-red: #ff5252;
+            --color-tf-green: #4caf50;
+            --color-tf-blue: #2196f3;
+            --color-tf-purple: #b388ff;
+            --font-sans: 'Inter', sans-serif;
+            --font-display: 'Montserrat', sans-serif;
+        }
+    </style>
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+
     <!-- Reveal.js CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
@@ -28,7 +44,7 @@
 
             <!-- Slide 1: Title -->
             <section data-id="title">
-                <i class="fa-solid fa-bolt" style="font-size: 4em; color: #FF8C00; filter: drop-shadow(0 0 20px #FF8C00); margin-bottom: 20px;"></i>
+                <i class="fa-solid fa-bolt text-tf-orange" style="font-size: 4em; filter: drop-shadow(0 0 20px #FF8C00); margin-bottom: 20px;"></i>
                 <h1><span class="text-orange">XÂY DỰNG</span> MEDIA TEAM</h1>
                 <h3 style="letter-spacing: 5px; margin-bottom: 40px;">TEAM FLASH GO GLOBAL</h3>
                 
@@ -108,7 +124,7 @@
                 <div class="flex-row" style="gap: 6px;">
                     <!-- AOV -->
                     <div class="flex-col card" style="min-width: 30%; border-top: 4px solid #FF8C00; padding: 6px;">
-                        <h4 style="color: #FF8C00; font-size: 0.7em; text-align: center;"><i class="fa-solid fa-chess-knight"></i> AOV — GROWTH MEDIA</h4>
+                        <h4 class="text-tf-orange" style="font-size: 0.7em; text-align: center;"><i class="fa-solid fa-chess-knight"></i> AOV — GROWTH MEDIA</h4>
                         <ul class="icon-list" style="font-size: 0.5em;">
                             <li><i class="fa-solid fa-calendar" style="color: #FF8C00;"></i> <div><strong>Thời gian:</strong> 01/01 – 31/05/2026</div></li>
                             <li><i class="fa-solid fa-bullseye" style="color: #FF8C00;"></i> <div><strong>Mục tiêu:</strong> View vượt <strong>80 triệu</strong> → lấy tối đa <strong style="color: #FFD700;">130 triệu VND</strong></div></li>
@@ -125,7 +141,7 @@
 
                     <!-- PUBG Mobile -->
                     <div class="flex-col card" style="min-width: 30%; border-top: 4px solid #FFD700; padding: 6px;">
-                        <h4 style="color: #FFD700; font-size: 0.7em; text-align: center;"><i class="fa-solid fa-crosshairs"></i> PUBG M — VNG PARTNER MEDIA</h4>
+                        <h4 class="text-tf-gold" style="font-size: 0.7em; text-align: center;"><i class="fa-solid fa-crosshairs"></i> PUBG M — VNG PARTNER MEDIA</h4>
                         <ul class="icon-list" style="font-size: 0.5em;">
                             <li><i class="fa-solid fa-calendar" style="color: #FFD700;"></i> <div><strong>Chu kỳ:</strong> 6 tháng (180 ngày)</div></li>
                             <li><i class="fa-solid fa-file-lines" style="color: #FFD700;"></i> <div><strong>SOW:</strong> Tối thiểu 350 bài / chu kỳ</div></li>
@@ -143,7 +159,7 @@
 
                     <!-- FreeFire -->
                     <div class="flex-col card" style="min-width: 30%; border-top: 4px solid #4caf50; padding: 6px;">
-                        <h4 style="color: #4caf50; font-size: 0.7em; text-align: center;"><i class="fa-solid fa-fire"></i> FREEFIRE — FFWS 2026 SPRING SEA</h4>
+                        <h4 class="text-tf-green" style="font-size: 0.7em; text-align: center;"><i class="fa-solid fa-fire"></i> FREEFIRE — FFWS 2026 SPRING SEA</h4>
                         <ul class="icon-list" style="font-size: 0.5em;">
                             <li><i class="fa-solid fa-calendar" style="color: #4caf50;"></i> <div><strong>Chu kỳ:</strong> 60 ngày (8-10 tuần)</div></li>
                             <li><i class="fa-solid fa-hashtag" style="color: #4caf50;"></i> <div><strong>Hashtag:</strong> #FFWSSEA2026 #TFFF #TeamFlash</div></li>
@@ -171,7 +187,7 @@
                 <div class="flex-row" style="flex-wrap: wrap; gap: 6px;">
                     <!-- FASTCARE -->
                     <div class="flex-col card" style="min-width: 30%; padding: 6px;">
-                        <h4 style="color: #FF8C00; font-size: 0.75em;"><i class="fa-solid fa-heart-pulse"></i> FASTCARE <span style="font-size:0.7em; color:#aaa;">(Jan–Dec 2026)</span></h4>
+                        <h4 class="text-tf-orange" style="font-size: 0.75em;"><i class="fa-solid fa-heart-pulse"></i> FASTCARE <span style="font-size:0.7em; color:#aaa;">(Jan–Dec 2026)</span></h4>
                         <ul class="icon-list" style="font-size: 0.55em;">
                             <li><i class="fa-solid fa-check"></i> 1 bài công bố + 1 bài cảm ơn hợp tác</li>
                             <li><i class="fa-solid fa-check"></i> 6 bài thương hiệu (Fanpage TF) + 10 bài (FB tuyển thủ)</li>
@@ -182,7 +198,7 @@
                     </div>
                     <!-- REALME -->
                     <div class="flex-col card" style="min-width: 30%; padding: 6px;">
-                        <h4 style="color: #FFD700; font-size: 0.75em;"><i class="fa-solid fa-mobile-screen-button"></i> REALME <span style="font-size:0.7em; color:#aaa;">(Jan–Jun 2026)</span></h4>
+                        <h4 class="text-tf-gold" style="font-size: 0.75em;"><i class="fa-solid fa-mobile-screen-button"></i> REALME <span style="font-size:0.7em; color:#aaa;">(Jan–Jun 2026)</span></h4>
                         <ul class="icon-list" style="font-size: 0.55em;">
                             <li><i class="fa-solid fa-check"></i> 1 bài + 1 video công bố, 1 bài cảm ơn</li>
                             <li><i class="fa-solid fa-check"></i> <strong>300 bài đăng chung</strong> (logo trên nội dung esports)</li>
@@ -193,7 +209,7 @@
                     </div>
                     <!-- UGREEN -->
                     <div class="flex-col card" style="min-width: 30%; padding: 6px;">
-                        <h4 style="color: #4caf50; font-size: 0.75em;"><i class="fa-solid fa-plug-circle-bolt"></i> UGREEN <span style="font-size:0.7em; color:#aaa;">(Mar–Dec 2026)</span></h4>
+                        <h4 class="text-tf-green" style="font-size: 0.75em;"><i class="fa-solid fa-plug-circle-bolt"></i> UGREEN <span style="font-size:0.7em; color:#aaa;">(Mar–Dec 2026)</span></h4>
                         <ul class="icon-list" style="font-size: 0.55em;">
                             <li><i class="fa-solid fa-check"></i> 1 bài công bố + 1 bài cảm ơn hợp tác</li>
                             <li><i class="fa-solid fa-check"></i> 2 bài thương hiệu + <strong>500 bài đăng chung</strong></li>
@@ -203,7 +219,7 @@
                     </div>
                     <!-- FPT PLAY -->
                     <div class="flex-col card" style="min-width: 30%; padding: 6px;">
-                        <h4 style="color: #FF8C00; font-size: 0.75em;"><i class="fa-solid fa-tv"></i> FPT PLAY <span style="font-size:0.7em; color:#aaa;">(Apr–Dec 2026)</span></h4>
+                        <h4 class="text-tf-orange" style="font-size: 0.75em;"><i class="fa-solid fa-tv"></i> FPT PLAY <span style="font-size:0.7em; color:#aaa;">(Apr–Dec 2026)</span></h4>
                         <ul class="icon-list" style="font-size: 0.55em;">
                             <li><i class="fa-solid fa-check"></i> 2 kênh FanGTV chính (Official + LQM Việt Nam) + các kênh vệ tinh</li>
                             <li><i class="fa-solid fa-check"></i> KPI: <strong>40K subscribers</strong> trên FanGTV</li>
@@ -212,7 +228,7 @@
                     </div>
                     <!-- HAIDILAO -->
                     <div class="flex-col card" style="min-width: 30%; padding: 6px;">
-                        <h4 style="color: #ff5252; font-size: 0.75em;"><i class="fa-solid fa-fire"></i> HAIDILAO <span style="font-size:0.7em; color:#aaa;">(TBD)</span></h4>
+                        <h4 class="text-tf-red" style="font-size: 0.75em;"><i class="fa-solid fa-fire"></i> HAIDILAO <span style="font-size:0.7em; color:#aaa;">(TBD)</span></h4>
                         <ul class="icon-list" style="font-size: 0.55em;">
                             <li><i class="fa-solid fa-check"></i> Scope chưa rõ — chờ xác nhận từ Brand</li>
                             <li><i class="fa-solid fa-check"></i> Dự kiến: Event + Content Shoot</li>
@@ -317,7 +333,7 @@
                         </ul>
                     </div>
                     <div class="flex-col card" style="padding: 6px; border-color: #FFD700; background: rgba(255,215,0,0.05);">
-                        <h4 style="color: #FFD700; font-size: 0.7em; text-align: center;"><i class="fa-solid fa-star"></i> DỰ ÁN LỚN BỊ BỎ LỠ</h4>
+                        <h4 class="text-tf-gold" style="font-size: 0.7em; text-align: center;"><i class="fa-solid fa-star"></i> DỰ ÁN LỚN BỊ BỎ LỠ</h4>
                         <ul class="icon-list" style="font-size: 0.55em;">
                             <li><i class="fa-solid fa-book" style="color: #FFD700;"></i> <div><strong>Photobook / Documentary</strong> — kể câu chuyện chưa ai kể</div></li>
                             <li><i class="fa-solid fa-id-card" style="color: #FF8C00;"></i> <div><strong>Player Profile</strong> — hình ảnh cá nhân tuyển thủ, viral global</div></li>
@@ -430,7 +446,7 @@
                 <div class="flex-row" style="margin-bottom: 10px;">
                     <!-- Bộ phận đầu não -->
                     <div class="flex-col card" style="border-top: 4px solid #FFD700; padding: 10px;">
-                        <h4 style="color: #FFD700; text-align: center; font-size: 0.75em; margin-bottom: 8px;"><i class="fa-solid fa-brain"></i> BỘ PHẬN ĐẦU NÃO</h4>
+                        <h4 class="text-tf-gold" style="text-align: center; font-size: 0.75em; margin-bottom: 8px;"><i class="fa-solid fa-brain"></i> BỘ PHẬN ĐẦU NÃO</h4>
                         <ul class="icon-list" style="font-size: 0.75em;">
                             <li><i class="fa-solid fa-user-tie"></i> <div><strong>1</strong> Lead Creative</div></li>
                             <li><i class="fa-solid fa-map"></i> <div><strong>1</strong> Media Planner</div></li>
@@ -440,7 +456,7 @@
 
                     <!-- Bộ phận sản xuất -->
                     <div class="flex-col card" style="border-top: 4px solid #ff5252; padding: 10px;">
-                        <h4 style="color: #ff5252; text-align: center; font-size: 0.75em; margin-bottom: 8px;"><i class="fa-solid fa-photo-film"></i> BỘ PHẬN SẢN XUẤT</h4>
+                        <h4 class="text-tf-red" style="text-align: center; font-size: 0.75em; margin-bottom: 8px;"><i class="fa-solid fa-photo-film"></i> BỘ PHẬN SẢN XUẤT</h4>
                         <ul class="icon-list" style="font-size: 0.75em;">
                             <li><i class="fa-solid fa-clapperboard"></i> <div><strong>2</strong> Video Editor / Designer</div></li>
                             <li><i class="fa-solid fa-pen-nib"></i> <div><strong>1</strong> Graphic Designer</div></li>
@@ -450,7 +466,7 @@
 
                     <!-- Quản lý Social -->
                     <div class="flex-col card" style="border-top: 4px solid #4caf50; padding: 10px;">
-                        <h4 style="color: #4caf50; text-align: center; font-size: 0.75em; margin-bottom: 8px;"><i class="fa-solid fa-share-nodes"></i> QUẢN LÝ SOCIAL</h4>
+                        <h4 class="text-tf-green" style="text-align: center; font-size: 0.75em; margin-bottom: 8px;"><i class="fa-solid fa-share-nodes"></i> QUẢN LÝ SOCIAL</h4>
                         <ul class="icon-list" style="font-size: 0.75em;">
                             <li><i class="fa-solid fa-gamepad"></i> <div><strong>1</strong> Content Planner (AOV)</div></li>
                             <li><i class="fa-solid fa-crosshairs"></i> <div><strong>1</strong> Content Planner (PUBG PC + PUBGM)</div></li>
@@ -500,7 +516,7 @@
                 <div class="flex-row" style="flex-wrap: wrap; gap: 8px;">
                     <!-- CTV Trực Giải -->
                     <div class="flex-col card" style="min-width: 30%; border-top: 4px solid #FF8C00; padding: 8px;">
-                        <h4 style="color: #FF8C00;"><i class="fa-solid fa-headset"></i> CTV TRỰC GIẢI</h4>
+                        <h4 class="text-tf-orange"><i class="fa-solid fa-headset"></i> CTV TRỰC GIẢI</h4>
                         <ul class="icon-list" style="font-size: 0.55em;">
                             <li><i class="fa-solid fa-video" style="color:#FF8C00;"></i> <div>Xem giải, note Highlight, Record <strong>2K/60fps</strong></div></li>
                             <li><i class="fa-solid fa-calendar-check" style="color:#FF8C00;"></i> <div>Phân bổ theo giải. <span class="text-red">Đã nhận phải trực, không báo sớm → không nghiệm thu.</span></div></li>
@@ -512,7 +528,7 @@
 
                     <!-- CTV Xem Livestream -->
                     <div class="flex-col card" style="min-width: 30%; border-top: 4px solid #2196f3; padding: 8px;">
-                        <h4 style="color: #2196f3;"><i class="fa-solid fa-tv"></i> CTV XEM LIVESTREAM</h4>
+                        <h4 class="text-tf-blue"><i class="fa-solid fa-tv"></i> CTV XEM LIVESTREAM</h4>
                         <ul class="icon-list" style="font-size: 0.55em;">
                             <li><i class="fa-solid fa-eye" style="color:#2196f3;"></i> <div>Tương tự Trực Giải nhưng <strong>không lương cứng</strong></div></li>
                             <li><i class="fa-solid fa-face-laugh-squint" style="color:#2196f3;"></i> <div>Gửi <strong>10 vids highlight/meme/funny</strong> đạt yêu cầu</div></li>
@@ -524,7 +540,7 @@
 
                     <!-- CTV Subtitle -->
                     <div class="flex-col card" style="min-width: 30%; border-top: 4px solid #4caf50; padding: 8px;">
-                        <h4 style="color: #4caf50;"><i class="fa-solid fa-closed-captioning"></i> CTV SUBTITLE</h4>
+                        <h4 class="text-tf-green"><i class="fa-solid fa-closed-captioning"></i> CTV SUBTITLE</h4>
                         <ul class="icon-list" style="font-size: 0.55em;">
                             <li><i class="fa-solid fa-closed-captioning" style="color:#4caf50;"></i> <div>Thêm sub cho <strong>Vlog, Mic-Check, Video dài</strong></div></li>
                         </ul>
@@ -535,7 +551,7 @@
 
                     <!-- CTV Editor Highlight -->
                     <div class="flex-col card" style="min-width: 30%; border-top: 4px solid #ff5252; padding: 8px;">
-                        <h4 style="color: #ff5252;"><i class="fa-solid fa-scissors"></i> CTV EDITOR HIGHLIGHT</h4>
+                        <h4 class="text-tf-red"><i class="fa-solid fa-scissors"></i> CTV EDITOR HIGHLIGHT</h4>
                         <ul class="icon-list" style="font-size: 0.55em;">
                             <li><i class="fa-solid fa-music" style="color:#ff5252;"></i> <div>Dùng chung 3 games. Edit theo <strong>beat (velocity)</strong></div></li>
                         </ul>
@@ -549,7 +565,7 @@
 
                     <!-- CTV Content (Sắp triển khai) -->
                     <div class="flex-col card" style="min-width: 30%; border-top: 4px solid #b388ff; padding: 8px; background: rgba(179,136,255,0.05);">
-                        <h4 style="color: #b388ff;"><i class="fa-solid fa-satellite-dish"></i> CTV CONTENT <span style="font-size:0.5em; background:#b388ff; color:#fff; padding:1px 5px; border-radius:3px; margin-left:4px;">MỚI</span></h4>
+                        <h4 class="text-tf-purple"><i class="fa-solid fa-satellite-dish"></i> CTV CONTENT <span style="font-size:0.5em; background:#b388ff; color:#fff; padding:1px 5px; border-radius:3px; margin-left:4px;">MỚI</span></h4>
                         <ul class="icon-list" style="font-size: 0.55em;">
                             <li><i class="fa-solid fa-lightbulb" style="color:#b388ff;"></i> <div>Note content — bắt trend & ứng dụng vào Team</div></li>
                             <li><i class="fa-solid fa-user-pen" style="color:#b388ff;"></i> <div>CTV đề xuất → Planner pick & sản xuất</div></li>

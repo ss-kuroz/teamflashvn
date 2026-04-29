@@ -6,69 +6,97 @@
     <meta name="description" content="Team Flash VN — Proposals Hub">
     <title>Team Flash VN — Proposals</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            --color-tf-orange: #FF8C00;
+            --color-tf-gold: #FFD700;
+            --color-tf-red: #ff5252;
+            --color-tf-green: #4caf50;
+            --color-tf-blue: #2196f3;
+            --color-tf-purple: #b388ff;
+            --font-sans: 'Inter', sans-serif;
+            --font-display: 'Montserrat', sans-serif;
+        }
+    </style>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
-<body>
+<body class="bg-gradient-to-br from-[#2a2a2a] to-[#121212] min-h-screen text-[#e0e0e0] overflow-x-hidden">
 
     <!-- Header -->
-    <div class="header">
-        <div class="bolt"><i class="fa-solid fa-bolt"></i></div>
-        <h1><span>TEAM FLASH</span> PROPOSALS</h1>
-        <p>Trung tâm tài liệu & đề xuất — Team Flash Go Global</p>
-    </div>
+    <header class="text-center pt-14 sm:pt-16 pb-6 sm:pb-8 px-5">
+        <div class="text-5xl sm:text-6xl text-tf-orange drop-shadow-[0_0_20px_#FF8C00] mb-2.5">
+            <i class="fa-solid fa-bolt"></i>
+        </div>
+        <h1 class="font-['Montserrat',sans-serif] font-black uppercase text-2xl sm:text-[2.2rem] text-white tracking-[3px] drop-shadow-[0_0_20px_rgba(255,140,0,0.5)]">
+            <span class="text-tf-orange">TEAM FLASH</span> PROPOSALS
+        </h1>
+        <p class="text-[#888] text-sm sm:text-[0.95rem] mt-2">Trung tâm tài liệu & đề xuất — Team Flash Go Global</p>
+    </header>
 
     <!-- Proposal Grid -->
-    <div class="grid">
+    <main class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 max-w-[1200px] mx-auto px-4 sm:px-6 pb-16 sm:pb-20">
 
         <!-- Meta Restrict Ads Proposal -->
-        <a href="./meta-restrict-ads-proposal.html" class="card">
-            <div class="icon-wrap red"><i class="fa-solid fa-shield-halved"></i></div>
-            <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-            <h3>Sự Cố Restrict Ads <span class="badge live">URGENT</span></h3>
-            <div class="subtitle">Meta Business Suite — April 2026</div>
-            <div class="desc">
+        <a href="./meta-restrict-ads-proposal.html" class="group bg-white/[0.06] border border-tf-orange/25 rounded-[14px] p-5 sm:p-7 relative transition-all duration-300 hover:border-tf-orange hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(255,140,0,0.18)] hover:bg-white/[0.09] backdrop-blur-sm flex flex-col no-underline">
+            <div class="w-[52px] h-[52px] rounded-xl flex items-center justify-center text-xl mb-4 bg-tf-red/15 text-tf-red">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <span class="absolute top-5 sm:top-7 right-5 sm:right-6 text-[#555] text-base transition-all duration-300 group-hover:text-tf-orange group-hover:translate-x-1">
+                <i class="fa-solid fa-arrow-right"></i>
+            </span>
+            <h3 class="font-['Montserrat',sans-serif] font-extrabold uppercase text-base text-white mb-1.5">
+                Sự Cố Restrict Ads <span class="inline-block text-[0.62em] px-2 py-0.5 rounded font-bold uppercase tracking-wide ml-1.5 align-middle bg-tf-red text-white">URGENT</span>
+            </h3>
+            <div class="text-tf-orange font-semibold text-[0.78em] mb-2.5">Meta Business Suite — April 2026</div>
+            <div class="text-[#bbb] text-sm leading-relaxed flex-1">
                 Báo cáo sự cố hạn chế quảng cáo trên Meta Business Suite: nguyên nhân, phân tích chuyên gia, 4 phương án xử lý, báo giá INSKY + FLASH Meta Suite Package.
             </div>
-            <div class="tags">
-                <span class="tag red">Meta Issue</span>
-                <span class="tag gold">Phương án xử lý</span>
-                <span class="tag blue">Báo giá</span>
-                <span class="tag purple">Verify & Partner</span>
+            <div class="flex flex-wrap gap-1.5 mt-3.5">
+                <span class="text-[0.68em] px-2.5 py-0.5 rounded-full font-medium bg-tf-red/15 text-tf-red border border-tf-red/30">Meta Issue</span>
+                <span class="text-[0.68em] px-2.5 py-0.5 rounded-full font-medium bg-tf-gold/15 text-tf-gold border border-tf-gold/25">Phương án xử lý</span>
+                <span class="text-[0.68em] px-2.5 py-0.5 rounded-full font-medium bg-tf-blue/15 text-tf-blue border border-tf-blue/25">Báo giá</span>
+                <span class="text-[0.68em] px-2.5 py-0.5 rounded-full font-medium bg-tf-purple/15 text-tf-purple border border-tf-purple/25">Verify & Partner</span>
             </div>
         </a>
 
         <!-- Media 2026 April Proposal -->
-        <a href="./media-2026-april-proposal.html" class="card">
-            <div class="icon-wrap orange"><i class="fa-solid fa-photo-film"></i></div>
-            <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-            <h3>Xây Dựng Media Team <span class="badge live">LIVE</span></h3>
-            <div class="subtitle">Media 2026 — April Proposal</div>
-            <div class="desc">
+        <a href="./media-2026-april-proposal.html" class="group bg-white/[0.06] border border-tf-orange/25 rounded-[14px] p-5 sm:p-7 relative transition-all duration-300 hover:border-tf-orange hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(255,140,0,0.18)] hover:bg-white/[0.09] backdrop-blur-sm flex flex-col no-underline">
+            <div class="w-[52px] h-[52px] rounded-xl flex items-center justify-center text-xl mb-4 bg-tf-orange/15 text-tf-orange">
+                <i class="fa-solid fa-photo-film"></i>
+            </div>
+            <span class="absolute top-5 sm:top-7 right-5 sm:right-6 text-[#555] text-base transition-all duration-300 group-hover:text-tf-orange group-hover:translate-x-1">
+                <i class="fa-solid fa-arrow-right"></i>
+            </span>
+            <h3 class="font-['Montserrat',sans-serif] font-extrabold uppercase text-base text-white mb-1.5">
+                Xây Dựng Media Team <span class="inline-block text-[0.62em] px-2 py-0.5 rounded font-bold uppercase tracking-wide ml-1.5 align-middle bg-tf-green text-white">LIVE</span>
+            </h3>
+            <div class="text-tf-orange font-semibold text-[0.78em] mb-2.5">Media 2026 — April Proposal</div>
+            <div class="text-[#bbb] text-sm leading-relaxed flex-1">
                 Đề xuất xây dựng Media Team: cấu trúc nhân sự, khối lượng Brand deliverables, ngân sách hiện tại & dự báo, lộ trình triển khai 4 phase, CTV SOW.
             </div>
-            <div class="tags">
-                <span class="tag orange">Media Team</span>
-                <span class="tag gold">Ngân sách</span>
-                <span class="tag blue">Nhân sự</span>
-                <span class="tag green">Lộ trình</span>
+            <div class="flex flex-wrap gap-1.5 mt-3.5">
+                <span class="text-[0.68em] px-2.5 py-0.5 rounded-full font-medium bg-tf-orange/15 text-tf-orange border border-tf-orange/30">Media Team</span>
+                <span class="text-[0.68em] px-2.5 py-0.5 rounded-full font-medium bg-tf-gold/15 text-tf-gold border border-tf-gold/25">Ngân sách</span>
+                <span class="text-[0.68em] px-2.5 py-0.5 rounded-full font-medium bg-tf-blue/15 text-tf-blue border border-tf-blue/25">Nhân sự</span>
+                <span class="text-[0.68em] px-2.5 py-0.5 rounded-full font-medium bg-tf-green/15 text-tf-green border border-tf-green/25">Lộ trình</span>
             </div>
         </a>
 
-    </div>
+    </main>
 
     <!-- Footer -->
-    <div class="footer">
-        <p>⚡ <a href="https://teamflashvn.nguyentaikurosuna.workers.dev">Team Flash VN</a> — Proposals Hub &copy; 2026</p>
-    </div>
+    <footer class="text-center py-7 sm:py-8 px-5 text-[#555] text-xs sm:text-[0.78em]">
+        <p>
+            ⚡ <a href="https://teamflashvn.nguyentaikurosuna.workers.dev" class="text-tf-orange no-underline hover:underline">Team Flash VN</a> — Proposals Hub &copy; 2026
+        </p>
+    </footer>
 
 </body>
 </html>
