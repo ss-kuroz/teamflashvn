@@ -34,7 +34,7 @@ body {
 }
 
 .reveal h3 { color: #FFD700; font-size: 1em; }
-.reveal h4 { font-size: 0.75em; margin-bottom: 8px; }
+.reveal h4 { color: #ffffff; font-size: 0.75em; margin-bottom: 8px; }
 
 .reveal p, .reveal li {
     font-size: 0.65em;
